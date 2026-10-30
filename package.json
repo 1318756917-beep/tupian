@@ -1,0 +1,12 @@
+{
+  "name": "creative-radar-online",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Creative Radar public image search using Openverse and Wikimedia Commons APIs",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "devDependencies": {
+    "vercel": "^41.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f7f9">
+<title>设计情报工作台 · Creative Radar</title>
+<style>
+:root{--bg:#f5f6f8;--paper:#fff;--ink:#20232a;--muted:#707784;--line:#e6e8ed;--accent:#222833}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,"Microsoft YaHei",system-ui,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);padding:18px clamp(16px,4vw,42px);position:sticky;top:0;z-index:3}
+.head{max-width:1500px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:16px}.logo{font-weight:850;font-size:20px;letter-spacing:.4px}.logo small{display:block;font-size:12px;font-weight:400;color:var(--muted);letter-spacing:0}
+main{max-width:1500px;margin:auto;padding:26px clamp(16px,4vw,42px) 52px}.intro{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}.intro h1{font-size:clamp(25px,3vw,38px);line-height:1.15;letter-spacing:-1px;margin:0 0 8px}.intro p{margin:0;color:var(--muted);max-width:760px}.badge{white-space:nowrap;border:1px solid var(--line);border-radius:99px;padding:7px 11px;background:#fff;color:#505866;font-size:12px}
+.search{display:flex;gap:9px;flex-wrap:wrap;padding:12px;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 6px 24px #00000005}
+input,select,button{font:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}input{flex:1;min-width:210px}button{cursor:pointer;font-weight:650}button.primary{background:var(--accent);border-color:var(--accent);color:white}button:disabled{opacity:.55;cursor:wait}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0 13px}.cat{cursor:pointer;border:1px solid var(--line);border-radius:99px;background:#fff;padding:8px 12px}.cat.active{background:#252b35;color:#fff;border-color:#252b35}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}.links a{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;text-decoration:none;color:#303743}.links a:hover{border-color:#9299a5}
+.status{display:flex;justify-content:space-between;gap:12px;color:var(--muted);margin:14px 0;flex-wrap:wrap}.grid{columns:5 210px;column-gap:14px}.card{break-inside:avoid;display:inline-block;width:100%;margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden}.card img{display:block;width:100%;max-height:380px;object-fit:cover;background:#edf0f4;min-height:100px}.meta{padding:11px}.meta strong{display:block;font-size:13px;margin-bottom:5px;overflow-wrap:anywhere}.meta p{font-size:12px;color:var(--muted);margin:0 0 8px;overflow-wrap:anywhere}.tag{font-size:11px;background:#f0f2f5;border-radius:5px;padding:3px 6px;display:inline-block;margin-bottom:7px}.meta a{color:#333;font-size:12px}.empty{padding:36px 18px;border:1px dashed #ccd1da;background:#fff;border-radius:14px;text-align:center;color:var(--muted)}
+.note{margin-top:24px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;color:#596170}.note b{color:#222}.note li{margin:5px 0}.foot{font-size:12px;color:#8a909b;margin-top:22px}
+@media(max-width:700px){.head{align-items:flex-start}.intro{display:block}.badge{display:inline-block;margin-top:12px}.grid{columns:2 140px}select{flex:1}}
+</style></head>
+<body>
+<header><div class="head"><div class="logo">CREATIVE RADAR <small>设计情报工作台 · 在线图片检索</small></div><span class="badge">公开图片源 · 实时搜索</span></div></header>
+<main>
+<section class="intro"><div><h1>把灵感，变成可检索的资料库。</h1><p>输入关键词，实时检索公开图片资源，并快速打开设计社区原站搜索。适用于美妆、洗护日化、食品快消、茶叶、服装、宠物与可持续包装。</p></div><span class="badge">电脑 / 手机自适应</span></section>
+<div class="search"><input id="q" value="cosmetic packaging design" placeholder="关键词，例如：护肤品包装、tea packaging、宠物品牌视觉"><select id="source"><option value="all">全部开放图片源</option><option value="openverse">Openverse</option><option value="commons">Wikimedia Commons</option></select><select id="license"><option value="all">全部授权类型</option><option value="commercial">优先可商用许可</option></select><button class="primary" id="go">联网搜索</button><button id="clear">清空</button></div>
+<div class="cats" id="cats">
+<span class="cat active" data-q="cosmetic packaging design">美妆包装</span><span class="cat" data-q="personal care bottle packaging">洗护日化</span><span class="cat" data-q="food beverage packaging design">食品快消</span><span class="cat" data-q="tea packaging branding">茶叶茶饮</span><span class="cat" data-q="fashion brand identity">服装品牌</span><span class="cat" data-q="pet product packaging design">宠物用品</span><span class="cat" data-q="sustainable packaging design">环保材料</span><span class="cat" data-q="editorial graphic design">平面视觉</span>
+</div>
+<div class="links">
+<a href="https://www.xiaohongshu.com/search_result?keyword=%E7%BE%8E%E5%A6%86%E5%8C%85%E8%A3%85%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">小红书 ↗</a>
+<a href="https://www.zcool.com.cn/search/content?word=%E5%8C%85%E8%A3%85%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">站酷 ↗</a>
+<a href="https://www.behance.net/search/projects?search=packaging%20design" target="_blank" rel="noopener">Behance ↗</a>
+<a href="https://www.pinterest.com/search/pins/?q=packaging%20design" target="_blank" rel="noopener">Pinterest ↗</a>
+<a href="https://www.gtn9.com/" target="_blank" rel="noopener">古田路9号 ↗</a>
+<a href="https://pentawards.com/" target="_blank" rel="noopener">Pentawards ↗</a>
+<a href="https://www.red-dot.org/" target="_blank" rel="noopener">Red Dot ↗</a>
+<a id="google" href="https://www.google.com/search?tbm=isch&q=packaging+design" target="_blank" rel="noopener">Google 图片 ↗</a>
+</div>
+<div class="status"><span id="status">准备就绪。点击“联网搜索”获取公开图片 API 的真实结果。</span><span id="count"></span></div>
+<div class="grid" id="results"></div>
+<section class="note"><b>平台接入范围与版权说明</b><ul>
+<li><b>本项目已实现：</b>Openverse、Wikimedia Commons 公开图片 API 搜索；返回结果会显示来源、原图/详情链接，以及 API 提供的作者和许可信息。</li>
+<li><b>快捷跳转但未抓取：</b>小红书、站酷、Behance、Pinterest、古田路9号、Pentawards、Red Dot。当前使用这些平台的公开搜索/官网入口，不会绕过登录、验证码、反爬或访问权限。</li>
+<li><b>可继续接入：</b>Unsplash 官方 API（需你申请 Access Key，并由服务端保管）；Behance 等平台须先确认官方 API 当前是否开放给你的应用。小红书/ Pinterest 的全站图片抓取不能承诺，需官方授权或合规数据接口。</li>
+<li>公开可见不代表可任意商用。下载或用于商业项目之前，请逐张核对许可、署名和平台条款。此工具默认展示来源链接，不把搜索结果自动保存为自有图库。</li>
+</ul></section>
+<div class="foot">在线部署后，本页面通过 /api/search 请求服务端代理。若来源接口限流、暂时不可用或无匹配结果，会显示相应错误状态，不会用示例图填充。</div>
+</main>
+<script>
+const $=s=>document.querySelector(s);const out=$('#results'),status=$('#status'),count=$('#count');let busy=false;
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function card(x){return `<article class="card"><a href="${esc(x.pageUrl||x.imageUrl||'#')}" target="_blank" rel="noopener"><img loading="lazy" src="${esc(x.thumbnail||x.imageUrl||'')}" alt="${esc(x.title||'搜索结果')}" onerror="this.closest('.card').style.display='none'"></a><div class="meta"><span class="tag">${esc(x.source||'公开图片源')}</span><strong>${esc(x.title||'未提供标题')}</strong><p>作者：${esc(x.creator||'来源未提供')}<br>许可：${esc(x.license||'请打开原始页面核实')}</p><a href="${esc(x.pageUrl||'#')}" target="_blank" rel="noopener">查看原始页面 ↗</a></div></article>`}
+async function search(){if(busy)return;const q=$('#q').value.trim();if(!q){status.textContent='请先输入关键词。';return}busy=true;$('#go').disabled=true;out.innerHTML='';count.textContent='';status.textContent='正在向公开图片源发起联网请求…';$('#google').href='https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q);
+try{const params=new URLSearchParams({q,source:$('#source').value,license:$('#license').value});const r=await fetch('/api/search?'+params.toString());const data=await r.json();if(!r.ok&&!data.results)throw new Error(data.error||'服务端请求失败');const items=data.results||[];out.innerHTML=items.map(card).join('')||'<div class="empty">没有获取到图片。请换用英文关键词、切换来源或稍后重试。</div>';count.textContent=`真实结果 ${items.length} 张`;status.textContent=data.errors?.length?`部分来源失败：${data.errors.join('；')}`:(items.length?'联网查询完成，结果来自真实公开 API。':'查询完成，但没有匹配结果。');}
+catch(e){out.innerHTML='<div class="empty">联网请求失败。请确认网站已部署到支持 Serverless Functions 的平台，并检查服务端 API 日志。<br><br>'+esc(e.message)+'</div>';status.textContent='请求失败';}
+finally{busy=false;$('#go').disabled=false}}
+$('#go').addEventListener('click',search);$('#q').addEventListener('keydown',e=>{if(e.key==='Enter')search()});$('#clear').addEventListener('click',()=>{out.innerHTML='';count.textContent='';status.textContent='结果已清空。'});
+document.querySelectorAll('.cat').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));el.classList.add('active');$('#q').value=el.dataset.q;search()}));
+</script></body></html>
